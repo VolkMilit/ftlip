@@ -21,9 +21,9 @@ field3 = thisthing3
 
 ``` cpp
 ftlip ini("path/to/ini/file.ini");
-std::string field1 = ini.get("field1");
-ini.set("field1", "new thing");
-ini.append("field1", " in ini");
+std::string field1 = ini.get("field1"); // return empty string if there is no such field
+ini.set("field1", "new thing"); // ignore if you can try to overwrite filed with same value, also add new filed with value, if there no such field
+ini.append("field1", " in ini"); // see above
 ```
 
 #### Know bugs
