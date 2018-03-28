@@ -25,7 +25,3 @@ std::string field1 = ini.get("field1"); // return empty string if there is no su
 ini.set("field1", "new thing"); // ignore if you can try to overwrite filed with same value, also add new filed with value, if there no such field
 ini.append("field1", " in ini"); // see above
 ```
-
-#### Know bugs
-
-- Commented fileds can be overwriten by 'set' or 'append' methods.

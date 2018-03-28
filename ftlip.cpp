@@ -44,15 +44,15 @@ const void ftlip::set(const std::string &field, const std::string &str)
 		
 	std::ofstream ofile (this->file);
 	
-	for (auto i = 0; i < filev.size(); i++)
+	for (auto linev : filev)
 	{
-		if (filev.at(i).find(field) != std::string::npos)
+		if (linev.find(field) != std::string::npos && linev.at(0) != '#')
 		{
 			found = true;
-			filev.at(i) = field + "=" + str;
+			linev = field + "=" + str;
 		}
 		
-		ofile << filev.at(i) << std::endl;
+		ofile << linev << std::endl;
 	}
 	
 	if (!found)
