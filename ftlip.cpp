@@ -105,3 +105,57 @@ const std::string ftlip::get(const std::string &field)
 	
 	return s;
 }
+
+const std::vector<std::string> ftlip::getMult(const std::string &field)
+{
+	std::vector<std::string> ret;
+	std::vector<std::string> s;
+	std::vector<std::string> ss;
+	std::string line = "";
+	std::ifstream file (this->file);
+	
+	std::string tmp = "";
+		
+	if (file.is_open())
+	{
+		while (std::getline(file, line))
+		{
+			if (line.size() > 0 && line.at(0) == '#') continue;
+			
+			if((line.find(field)) != std::string::npos)
+			{
+				s.push_back(line);
+				//break;
+			}
+		}
+		file.close();
+	}
+	
+	if (!s.empty())
+	{
+		std::string tmp = "";
+		
+		for (auto item : s)
+		{
+			tmp = "";
+			
+			try
+			{
+				ss = split(item, '=');
+			
+				for (auto i = 1; i < ss.size(); i++)
+				{
+					if (i > 1 && i < ss.size())
+						tmp += "=";
+				
+					tmp += ss.at(i);
+				}
+			}
+			catch(...){tmp = "";}
+			
+			ret.push_back(tmp);
+		}
+	}
+	
+	return ret;
+}

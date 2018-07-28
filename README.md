@@ -25,3 +25,25 @@ std::string field1 = ini.get("field1"); // return empty string if there is no su
 ini.set("field1", "new thing"); // ignore if you can try to overwrite filed with same value, also add new filed with value, if there no such field
 ini.append("field1", " in ini"); // see above
 ```
+
+#### Multiply field with same name
+
+```ini
+content=foo
+content=bar
+```
+
+```cpp
+ftlip ini("path/to/ini/file.ini");
+std::vector<std::string> fieldsList = ini.getMult("content");
+
+for (auto item : fieldsList)
+	std::cout << item << std::endl;
+	
+/*
+	This code will output this:
+	
+	foo
+	bar
+*/
+```

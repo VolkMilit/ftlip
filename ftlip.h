@@ -14,6 +14,7 @@ class ftlip final
 			~ftlip();
 			
 			const std::string get(const std::string &field);
+			const std::vector<std::string> getMult(const std::string &field);
 			const void set(const std::string &field, const std::string &str);
 			const void append(const std::string &field, const std::string &str);
 			
